@@ -4,3 +4,4 @@ results/
 .vscode/
 __pycache__
 dnnlib/__pycache__
+data/
