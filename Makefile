@@ -47,7 +47,7 @@ video:
 
 
 download-wikiart:
-	gdown --id 1-5xZkD8ajXw1DdopTkH_rAoCsD72LhKU -O /content/drive/MyDrive/colab-sg2-ada-pytorch/stylegan2-ada-pytorch/pretrained/wikiart.pkl
+	gdown --id 1-5xZkD8ajXw1DdopTkH_rAoCsD72LhKU -O pretrained/wikiart.pkl
 
 
 # setup
