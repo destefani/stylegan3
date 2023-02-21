@@ -29,7 +29,7 @@ wiki2:
 		-v `pwd`:/scratch --workdir /scratch -e HOME=/scratch --shm-size 50G\
 		stylegan3 \
 		python train.py --outdir=./results/wiki2 --cfg=stylegan2 --data=datasets/prints.zip \
-			--gpus=1 --batch=32 --batch-gpu=4 --gamma=32 --mirror=True --snap=1 --metrics=None --resume=pretrained/wikiart.pkl
+			--gpus=1 --batch=32 --batch-gpu=4 --gamma=32 --mirror=False --snap=1 --metrics=None --resume=pretrained/wikiart.pkl
 
 resume-wiki:
 	docker run --gpus all -it --rm --user $(id -u):$(id -g) \
