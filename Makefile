@@ -29,7 +29,7 @@ wiki2:
 		-v `pwd`:/scratch --workdir /scratch -e HOME=/scratch --shm-size 50G\
 		stylegan3 \
 		python train.py --outdir=./results/wiki2 --cfg=stylegan2 --data=datasets/prints.zip \
-			--gpus=2 --batch=32 --batch-gpu=4 --gamma=32 --mirror=True --snap=1 --metrics=None --resume=pretrained/wikiart-stg2.pkl
+			--gpus=1 --batch=32 --batch-gpu=4 --gamma=32 --mirror=True --snap=1 --metrics=None --resume=pretrained/wikiart.pkl
 
 resume-wiki:
 	docker run --gpus all -it --rm --user $(id -u):$(id -g) \
@@ -44,3 +44,14 @@ video:
 		stylegan3 \
 		python gen_video.py --output=videos/t1_s0-31_pkl92.mp4 --trunc=1 --seeds=0-31 --w-frames=360 \
 			--network=results/wiki2/00001-stylegan2-prints-gpus2-batch32-gamma32/network-snapshot-000208.pkl
+
+
+download-wikiart:
+	gdown --id 1-5xZkD8ajXw1DdopTkH_rAoCsD72LhKU -O /content/drive/MyDrive/colab-sg2-ada-pytorch/stylegan2-ada-pytorch/pretrained/wikiart.pkl
+
+
+# setup
+# 1. copy images
+# 2. download pretrained weights
+# 3 build docker
+# 4. trian
