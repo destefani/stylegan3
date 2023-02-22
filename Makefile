@@ -2,7 +2,7 @@ dataset:
 	docker run --gpus all -it --rm --user $(id -u):$(id -g) \
 		-v `pwd`:/scratch --workdir /scratch -e HOME=/scratch \
 		stylegan3 \
-		python dataset_tool.py --source datasets/jpeg --dest datasets/prints.zip --resolution 1024x1024
+		python dataset_tool.py --source datasets/jpeg --dest datasets/muros.zip --resolution 1024x1024
 
 train:
 	docker run --gpus all -it --rm --user $(id -u):$(id -g) \
@@ -28,15 +28,15 @@ wiki2:
 	docker run --gpus all -it --rm --user $(id -u):$(id -g) \
 		-v `pwd`:/scratch --workdir /scratch -e HOME=/scratch --shm-size 50G\
 		stylegan3 \
-		python train.py --outdir=./results/wiki2 --cfg=stylegan2 --data=datasets/prints.zip \
-			--gpus=1 --batch=32 --batch-gpu=4 --gamma=32 --mirror=False --snap=1 --metrics=None --resume=pretrained/wikiart.pkl
+		python train.py --outdir=./results/wiki2 --cfg=stylegan2 --data=datasets/muros.zip \
+			--gpus=1 --batch=32 --batch-gpu=4 --gamma=32 --mirror=True --snap=10 --metrics=None --resume=pretrained/wikiart.pkl
 
 resume-wiki:
 	docker run --gpus all -it --rm --user $(id -u):$(id -g) \
 		-v `pwd`:/scratch --workdir /scratch -e HOME=/scratch --shm-size 50G\
 		stylegan3 \
-		python train.py --outdir=./results/wiki2  --cfg=stylegan2 --data=datasets/prints.zip \
-			--gpus=2 --batch=32 --batch-gpu=4 --gamma=32 --mirror=1 --snap=1 --metrics=None --resume=latest
+		python train.py --outdir=./results/wiki2  --cfg=stylegan2 --data=datasets/muros.zip \
+			--gpus=1 --batch=36 --batch-gpu=12 --gamma=32 --mirror=False --snap=20 --metrics=None --resume=latest 
 
 video:
 	docker run --gpus all -it --rm --user $(id -u):$(id -g) \
